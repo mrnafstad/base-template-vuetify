@@ -1,10 +1,8 @@
 <template>
   <v-container fluid>
-    <v-menu open-on-hover top offset-y :close-on-content-click="false" background="white">
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn color="secondary" dark v-bind="attrs" v-on="on">Login</v-btn>
-      </template>
-      <v-list>
+    <v-overlay id="login" :value="login" absolute>
+          <v-card light>
+          <v-list>
         <v-list-item>
           <v-text-field v-model="username" label="Username" prepend-icon="mdi-account-circle" />
         </v-list-item>
@@ -14,29 +12,41 @@
             label="Password"
             :type="showPassword ? 'text' : 'password'"
             prepend-icon="mdi-lock"
-            append-icon="mdi-eye-off"
+            :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
             @click:append="showPassword = !showPassword"
           />
         </v-list-item>
         <v-list-item>
-          <v-btn color="success">Register</v-btn>
+          <v-btn color="danger" @click="toggleLogin">Exit</v-btn>
           <v-spacer />
           <v-btn color="info">Login</v-btn>
         </v-list-item>
       </v-list>
-    </v-menu>
+      </v-card>
+      </v-overlay>
+      
+
+        
   </v-container>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: "Login",
   data() {
     return {
       username: null,
       password: null,
-      showPassword: false
+      showPassword: false,
     };
+  },
+  methods: {
+    ...mapActions(['toggleLogin'])
+  },
+  computed: {
+    ...mapGetters(['login'])
   }
 };
 </script>

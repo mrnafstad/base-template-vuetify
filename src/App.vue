@@ -1,6 +1,8 @@
 <template>
   <v-app>
     <Header />
+    
+    <Login />
 
     <v-main>
       <router-view />
@@ -13,16 +15,14 @@
 <script>
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
+import Login from './components/Login.vue'
 
 export default {
   name: "App",
   components: {
     Header,
-    Footer
-  },
-
-  data: () => ({
-    //
-  })
+    Footer,
+    Login
+  }
 };
 </script>
