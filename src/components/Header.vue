@@ -33,14 +33,11 @@ export default {
   name: "Header",
   data() {
     return {
-      showLogin: false,
-      username: null,
-      password: null,
       drawer: false
     };
   },
   methods: {
-    ...mapActions(['toggleLogin'])
+    ...mapActions(['toggleLogin']),
   }
 };
 </script>

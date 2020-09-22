@@ -19,7 +19,7 @@
         <v-list-item>
           <v-btn color="danger" @click="toggleLogin">Exit</v-btn>
           <v-spacer />
-          <v-btn color="info">Login</v-btn>
+          <v-btn color="info" @click="signIn">Login</v-btn>
         </v-list-item>
       </v-list>
       </v-card>
@@ -43,7 +43,11 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['toggleLogin'])
+    ...mapActions(['toggleLogin']),
+    signIn() {
+      this.username = null
+      this.password = null
+    }
   },
   computed: {
     ...mapGetters(['login'])
